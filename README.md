@@ -40,3 +40,10 @@ Let me know if you need further adjustments or additions!
     ```bash
     git clone https://github.com/your-username/ncitizen.git
     ```
+2. ```bash
+   cd i
+   npm install
+   ```
+3. ```bash
+   npm start
+   ```
