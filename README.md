@@ -1,30 +1,42 @@
-# NCitizen
+# ncitizen
 
-NCitizen is a web application designed to provide users with a personalized profile experience. It allows users to manage their profile information such as name, email, and other personal preferences. Built with React and Firebase, NCitizen provides an intuitive and responsive interface for users to update and manage their profile details, ensuring a smooth experience.
+ncitizen is a community-driven platform that allows users to engage with various societal and geographic issues. The platform lets users join communities based on different issues like politics, military, healthcare, education, etc., as well as geographic communities for specific cities and locations.
 
 ## Features
 
--   _User Authentication_: Log in and sign out using Firebase Authentication.
--   _Profile Management_: Update user information like name, email, and other personal details.
--   _Dynamic Profile Image_: Allow users to upload or update their profile picture.
--   _User Preferences_: Users can select preferences such as gender, age, political identification, race, education, and voting likelihood.
--   _Real-time Database_: Firebase Firestore to save and fetch user data.
--   _Responsive Design_: The app is optimized for both desktop and mobile use.
+-   _Login and Authentication_: Users can log in via Firebase authentication.
+-   _Join/Leave Communities_: Users can join or leave communities related to various societal and geographic issues. The state is saved using localStorage.
+-   _Responsive Design_: The platform is built with a responsive design that adapts to different screen sizes.
+-   _Dynamic Community Cards_: Each community has an associated image, and users can easily join or leave communities with a single click.
 
-## Installation
+## Tech Stack
 
-### Prerequisites
+-   _Frontend_: React.js
+-   _Backend_: Firebase Authentication, Firebase Firestore
+-   _Routing_: React Router
+-   _Styling_: Tailwind CSS
+-   _State Management_: React useState and useEffect
 
-Ensure you have the following installed on your system:
+### Communities:
 
--   Node.js (v14 or above)
--   npm or yarn
--   Firebase account (for Authentication and Firestore setup)
+The Community component now features two types of communities:
 
-### Steps to Install
+1. _Issue-based communities_: Covering topics like Media, Military, Education, etc.
+2. _Geographic-based communities_: Covering locations like New York, Texas, Tennessee, etc.
 
-1. Clone the repository:
+Each community has an associated image, and users can join or leave them based on their login state. If the user is not logged in, they are prompted to log in before they can join a community.
 
+### Firebase Integration:
+
+This project uses Firebase Authentication to manage user logins. Upon login, users can join communities, and their choices are stored in localStorage so that they persist across sessions.
+
+---
+
+Let me know if you need further adjustments or additions!
+
+## Setup Instructions
+
+1. _Clone the Repository_:
     ```bash
-    git clone https://github.com/yourusername/ncitizen.git
+    git clone https://github.com/your-username/ncitizen.git
     ```
