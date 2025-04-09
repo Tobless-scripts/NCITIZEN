@@ -193,7 +193,7 @@ function Home() {
                                 alt={pollContent.title}
                                 className="w-full"
                                 onError={(e) => {
-                                    e.currentTarget.src = "logo2";
+                                    e.currentTarget.src = logo2;
                                 }}
                             />
                         </span>

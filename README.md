@@ -1,49 +1,86 @@
-# ncitizen
+# 🏛️ NCitizen
 
-ncitizen is a community-driven platform that allows users to engage with various societal and geographic issues. The platform lets users join communities based on different issues like politics, military, healthcare, education, etc., as well as geographic communities for specific cities and locations.
+**NCitizen** is a community-driven platform that allows users to engage with various societal and geographic issues. The platform lets users join communities based on interests like **politics, military, healthcare, education**, and more — including geographic communities for specific **cities and locations**.
 
-## Features
+## ✨ Features
 
--   _Login and Authentication_: Users can log in via Firebase authentication.
--   _Join/Leave Communities_: Users can join or leave communities related to various societal and geographic issues. The state is saved using localStorage.
--   _Responsive Design_: The platform is built with a responsive design that adapts to different screen sizes.
--   _Dynamic Community Cards_: Each community has an associated image, and users can easily join or leave communities with a single click.
-
-## Tech Stack
-
--   _Frontend_: React.js
--   _Backend_: Firebase Authentication, Firebase Firestore
--   _Routing_: React Router
--   _Styling_: Tailwind CSS
--   _State Management_: React useState and useEffect
-
-### Communities:
-
-The Community component now features two types of communities:
-
-1. _Issue-based communities_: Covering topics like Media, Military, Education, etc.
-2. _Geographic-based communities_: Covering locations like New York, Texas, Tennessee, etc.
-
-Each community has an associated image, and users can join or leave them based on their login state. If the user is not logged in, they are prompted to log in before they can join a community.
-
-### Firebase Integration:
-
-This project uses Firebase Authentication to manage user logins. Upon login, users can join communities, and their choices are stored in localStorage so that they persist across sessions.
+-   ✅ **Responsive UI**
+-   📊 **Animated poll result bars**
+-   🖼️ **Poll cards** with title, date, image, and metadata
+-   📌 **Toggleable poll views**: Raw, Weighted, Party, Gender, Race, Age, Region, Education
+-   🔄 **Smooth transition animations**
+-   🎨 **Color-coded poll bars** with dynamic labels
+-   🔐 **Firebase Authentication** – Users can log in securely
+-   🧩 **Join/Leave Communities** – Saved using `localStorage`
+-   📱 **Responsive Design** – Fully mobile-friendly
+-   📦 **Dynamic Community Cards** – Each with images and join/leave toggle
 
 ---
 
-Let me know if you need further adjustments or additions!
+## 🧰 Tech Stack
 
-## Setup Instructions
+-   **Frontend**: React.js (with TypeScript)
+-   **Backend**: Firebase (Authentication + Firestore)
+-   **Routing**: React Router
+-   **Styling**: Tailwind CSS
+-   **React Hooks**: `useState`, `useEffect`, `useContext`
 
-1. _Clone the Repository_:
-    ```bash
-    git clone https://github.com/your-username/ncitizen.git
-    ```
-2. ```bash
-   cd i
-   npm install
-   ```
-3. ```bash
-   npm start
-   ```
+---
+
+## 🧠 Data Structure
+
+-   Polls are dynamically generated from an array of objects.
+-   Each poll view (Raw, Party, Gender, etc.) shows unique `yes` and `no` percentages.
+-   Poll bars auto-adjust and animate based on selected demographics.
+
+---
+
+## 🌐 Communities
+
+NCitizen supports two types of communities:
+
+1. **Issue-based communities**  
+   Topics like Media, Military, Healthcare, Education, etc.
+
+2. **Geographic-based communities**  
+   Locations like New York, Texas, California, Tennessee, etc.
+
+> 📌 Each community has an associated image, and users can join or leave with a single click. If not logged in, users are prompted to log in before joining.
+
+---
+
+## 🔥 Firebase Integration
+
+-   **Authentication**: Firebase Auth handles user sign-ins.
+-   **Persistence**: Community join state is saved in `localStorage` to maintain data across sessions.
+-   **Protected Actions**: Only logged-in users can join/leave communities.
+
+---
+
+## 👨‍💻 Author
+
+**Obayomi Taofeek**  
+Frontend Developer & React Enthusiast  
+📧 obayomitaofeek7@gmail.com  
+🐦 [Twitter / X](https://x.com/ObayomiTaofeek)  
+💻 [GitHub](https://github.com/Tobless-Scripts)
+
+---
+
+## 🪪 License
+
+MIT License © 2025 Obayomi Taofeek
+
+---
+
+## ⚙️ Setup Instructions
+
+1.  **Clone the Repository**
+
+        ```bash
+        git clone https://github.com/Tobless-scripts/ncitizen.git
+        cd ncitizen
+        npm install
+        npm run dev
+
+        ```
