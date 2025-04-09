@@ -3,7 +3,7 @@ import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../Firebase/firebase-config";
 import { useImage } from "../Context/ImageContext";
-import defaultImage from "../assets/user.png";
+import defaultImage from "../assets/user.png"; // Default image path
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "../Firebase/firebase-config";
 
@@ -23,6 +23,7 @@ const Profile = () => {
         likelyVoter: "",
     });
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
     const options = {
         gender: ["Male", "Female", "Other"],
@@ -38,8 +39,6 @@ const Profile = () => {
         likelyVoter: ["Yes", "No"],
     };
 
-    const navigate = useNavigate();
-
     const saveData = async () => {
         setLoading(true);
         try {
@@ -49,7 +48,7 @@ const Profile = () => {
             await setDoc(userRef, {
                 name: nameInput,
                 email: emailInput,
-                profileImage: imageSrc,
+                profileImage: imageSrc || defaultImage, // Ensure a valid image is set
                 ...formData,
             });
             console.log("User data saved successfully!");
@@ -81,8 +80,8 @@ const Profile = () => {
 
             if (userDoc.exists()) {
                 const data = userDoc.data();
-                setNameInput(data?.name || ""); // Set name input
-                setEmailInput(data?.email || ""); // Set email input
+                setNameInput(data?.name || "");
+                setEmailInput(data?.email || "");
                 setImageSrc(data?.profileImage || defaultImage); // Set image from Firestore
                 setFormData({
                     gender: data?.gender || "",
@@ -166,7 +165,7 @@ const Profile = () => {
                 <label htmlFor="profile-upload">
                     <div className="bg-gray-200 w-[9em] h-[9em] rounded-full overflow-hidden border-2 border-gray-300">
                         <img
-                            src={imageSrc}
+                            src={imageSrc || defaultImage}
                             alt="profile"
                             className="object-cover object-top w-full h-full rounded-full cursor-pointer"
                         />
@@ -188,7 +187,7 @@ const Profile = () => {
                             type="text"
                             value={nameInput}
                             onChange={(e) => setNameInput(e.target.value)}
-                            placeholder={namePlaceholder}
+                            placeholder={namePlaceholder || "Name"}
                             className="border-gray-400 border border-2 w-full py-1.5 px-2"
                         />
                         <button
@@ -205,7 +204,7 @@ const Profile = () => {
                             type="text"
                             value={emailInput}
                             onChange={(e) => setEmailInput(e.target.value)}
-                            placeholder={emailPlaceholder}
+                            placeholder={emailPlaceholder || "Email"}
                             className="border-gray-400 border mt-6 border-2 w-full py-1.5 px-2"
                         />
                         <button
