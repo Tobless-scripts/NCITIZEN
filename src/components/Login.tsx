@@ -80,7 +80,7 @@ function Login() {
     }
 
     return (
-        <div className="border-none md:border-2 border-white rounded-md grid grid-cols-1 lg:grid-cols-2 px-12 md:px-20 lg:px-48 pb-8 lg:pb-0 my-auto pt-8 md:pt-8">
+        <div className="border-none md:border-2 border-white rounded-md grid grid-cols-1 lg:grid-cols-2 px-4 md:px-20 lg:px-48 pb-8 lg:pb-0 my-auto pt-8 md:pt-8">
             <div className="hidden lg:flex">
                 <img src={branding} alt="branding" className="w-full h-full" />
             </div>
