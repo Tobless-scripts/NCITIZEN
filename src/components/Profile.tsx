@@ -62,7 +62,7 @@ const Profile = () => {
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
-            if (user) {
+            if (user?.email) {
                 setUser(user);
                 fetchUserData(user.email); // Fetch user data on login
             } else {

@@ -7,7 +7,7 @@ import {
     GoogleAuthProvider,
     signInWithPopup,
 } from "firebase/auth";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNotifications } from "./Notifications";
 
 function Login() {
@@ -17,11 +17,11 @@ function Login() {
 
     const { addNotification } = useNotifications();
 
-    function handleLogin(e) {
+    function handleLogin(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        const email = e.target.email.value;
-        const password = e.target.password.value;
-        e.target.reset();
+        const email = (e.target as HTMLFormElement).email.value;
+        const password = (e.target as HTMLFormElement).password.value;
+        (e.target as HTMLFormElement).reset();
 
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
