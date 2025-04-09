@@ -3,11 +3,9 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getMessaging } from "firebase/messaging";
 import { getFirestore } from "firebase/firestore";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getStorage } from "firebase/storage";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Firebase SDKS
 const firebaseConfig = {
     apiKey: "AIzaSyAhsQ8EYxNFWbHrvFur6hIrqj3lmg61n5g",
     authDomain: "icitizen-ng.firebaseapp.com",
@@ -23,5 +21,6 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const messaging = getMessaging(app);
 const db = getFirestore(app);
+const storage = getStorage(app);
 
-export { auth, app, messaging, db };
+export { auth, app, messaging, db, storage };

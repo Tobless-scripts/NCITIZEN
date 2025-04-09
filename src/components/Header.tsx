@@ -5,17 +5,15 @@ import Globe1 from "../assets/Globe1.png";
 import { useEffect, useState } from "react";
 import { auth } from "../Firebase/firebase-config";
 import { onAuthStateChanged } from "firebase/auth";
-import profileImg from "../assets/user.png";
+import { useImage } from "../Context/ImageContext";
+import defaultImage from "../assets/user.png";
 
-type HeaderProps = {
-    profileImage: string | null;
-};
-
-function Header({ profileImage }: HeaderProps) {
+function Header() {
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
     const [isSticky, setIsSticky] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const { imageSrc } = useImage();
 
     useEffect(() => {
         const handleSticky = () => {
@@ -36,11 +34,7 @@ function Header({ profileImage }: HeaderProps) {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
-            if (user) {
-                setIsLoggedIn(true);
-            } else {
-                setIsLoggedIn(false);
-            }
+            setIsLoggedIn(!!user);
         });
         return () => unsubscribe();
     }, []);
@@ -49,13 +43,15 @@ function Header({ profileImage }: HeaderProps) {
         <>
             <div
                 className={`w-full pt-3 px-12 md:px-20 lg:px-48 bg-white ${
-                    isSticky ? "fixed top-0 left-0 z-50" : ""
+                    isSticky
+                        ? "fixed top-0 left-0 z-50 shadow-md shadow-white"
+                        : ""
                 }`}
             >
                 <div className="flex justify-between items-center">
                     <div className="flex justify-evenly items-center gap-8">
                         <NavLink to={"/"}>
-                            <img src={logo} alt="logo" />
+                            <img src={logo} alt="Logo" />
                         </NavLink>
                         <div className="hidden md:flex justify-evenly items-center gap-8">
                             <NavLink
@@ -68,7 +64,7 @@ function Header({ profileImage }: HeaderProps) {
                             >
                                 <img
                                     src={home1}
-                                    alt="home"
+                                    alt="Home"
                                     className="w-[2.5rem]"
                                 />
                             </NavLink>
@@ -82,7 +78,7 @@ function Header({ profileImage }: HeaderProps) {
                             >
                                 <img
                                     src={Globe1}
-                                    alt="community"
+                                    alt="Community"
                                     className="w-[2.5rem]"
                                 />
                             </NavLink>
@@ -99,15 +95,14 @@ function Header({ profileImage }: HeaderProps) {
                         <div className="flex gap-4 justify-center items-center relative">
                             <NavLink to="/profile">
                                 <div className="bg-gray-200 w-[2em] h-[2em] rounded-full overflow-hidden cursor-pointer border-2 border-gray-300">
-                                    {profileImage ? (
-                                        <img
-                                            src={profileImage}
-                                            alt="Preview"
-                                            className="object-cover object-top w-full h-full rounded-full"
-                                        />
-                                    ) : (
-                                        <img src={profileImg} alt="" />
-                                    )}
+                                    <img
+                                        src={imageSrc || defaultImage}
+                                        alt="Profile Preview"
+                                        className="object-cover object-top w-full h-full rounded-full"
+                                        onError={(e) => {
+                                            e.currentTarget.src = defaultImage; // Fallback image
+                                        }}
+                                    />
                                 </div>
                             </NavLink>
                         </div>
@@ -128,7 +123,7 @@ function Header({ profileImage }: HeaderProps) {
                             isActive ? "navBar-link active" : "navBar-link"
                         }
                     >
-                        <img src={home1} alt="home" className="w-[2.5rem]" />
+                        <img src={home1} alt="Home" className="w-[2.5rem]" />
                     </NavLink>
                     <NavLink
                         to={"/community"}
@@ -138,7 +133,7 @@ function Header({ profileImage }: HeaderProps) {
                     >
                         <img
                             src={Globe1}
-                            alt="community"
+                            alt="Community"
                             className="w-[2.5rem]"
                         />
                     </NavLink>
